@@ -1,0 +1,32 @@
+<div class="chatbox">
+<div class="messages">
+
+<div *ngFor="let message of messages" [class.right]="message.self">
+  {{message.text}}
+</div>
+
+</div>
+<div class="input-container" *ngIf="xyz; else otherone ">
+  <div class="check" *ngIf="lastcondition;else other"> <b>Poor</b>
+    <div *ngFor=" let n of arr,let idx = index" style="display: inline">
+      <span><input type="radio" name="rating" id="{{n}}" value="{{n}}"  (change)="onSelectionChange(n)"><label for="{{n}}" > {{n}}</label></span>
+  </div><b>Excellent</b>
+    </div>
+  <ng-template #other>
+
+      <input type="text" class="inputtext" [(ngModel)]="replyMessage" placeholder="Enter your Feedback">
+
+  </ng-template>
+</div>
+  <ng-template #otherone>
+    <div class="input-container">
+       <div *ngFor=" let n of string_object" >
+      <span><input type="radio" name="rating" id="{{n.text}}" value="{{n.text}}"  (change)="onSelectionChange(n.text)"><label for="{{n.text}}" > {{n.text}}</label></span>
+    </div >
+    </div>
+  </ng-template>
+  <div class="input-container">
+  <button class="replyBtn" id="button1" (click)="reply()">Submit Feedback</button>
+  </div>
+
+</div>
